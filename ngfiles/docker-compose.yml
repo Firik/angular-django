@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  mysql_db:
+    image: mysql
+  angular:
+    build: 
+      context: ./
+      dockerfile: Dockerfile_angular2
+    image: angular2
+    volumes:
+      - .:/home/firik/app
+    container_name: angular2_con
+    command: npm start
