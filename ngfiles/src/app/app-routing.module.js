@@ -10,11 +10,13 @@ var router_1 = require("@angular/router");
 var dashboard_component_1 = require("./components/dashboard.component");
 var heroes_component_1 = require("./components/heroes.component");
 var hero_detail_component_1 = require("./components/hero-detail.component");
+var tasks_component_1 = require("./components/tasks.component");
 var routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: dashboard_component_1.DashboardComponent },
     { path: 'detail/:id', component: hero_detail_component_1.HeroDetailComponent },
-    { path: 'heroes', component: heroes_component_1.HeroesComponent }
+    { path: 'heroes', component: heroes_component_1.HeroesComponent },
+    { path: 'tasks', component: tasks_component_1.TasksComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

@@ -18,10 +18,8 @@ RUN apk upgrade --update && \
 
 RUN adduser -D -u 1000 firik -h /home/firik
 USER firik
-RUN mkdir /home/firik/app
-WORKDIR /home/firik
-VOLUME ["/home/firik/app"]
-
-ENTRYPOINT ["bash"]
+RUN mkdir -p /home/firik/app/ngfiles
+WORKDIR /home/firik/app/ngfiles
+VOLUME ["/home/firik/app/ngfiles"]
 
 EXPOSE 4201

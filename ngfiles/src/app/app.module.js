@@ -10,13 +10,15 @@ var forms_1 = require("@angular/forms");
 var platform_browser_1 = require("@angular/platform-browser");
 var http_1 = require("@angular/http");
 var app_routing_module_1 = require("./app-routing.module");
-var angular_in_memory_web_api_1 = require("angular-in-memory-web-api");
-var in_memory_data_service_1 = require("./services/in-memory-data.service");
+// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryDataService }  from './services/in-memory-data.service';
 var app_component_1 = require("./components/app.component");
 var hero_detail_component_1 = require("./components/hero-detail.component");
 var heroes_component_1 = require("./components/heroes.component");
 var dashboard_component_1 = require("./components/dashboard.component");
+var tasks_component_1 = require("./components/tasks.component");
 var hero_service_1 = require("./services/hero.service");
+var task_service_1 = require("./services/task.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -29,16 +31,19 @@ AppModule = __decorate([
             forms_1.FormsModule,
             app_routing_module_1.AppRoutingModule,
             http_1.HttpModule,
-            angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService),
         ],
         declarations: [
             app_component_1.AppComponent,
             hero_detail_component_1.HeroDetailComponent,
             heroes_component_1.HeroesComponent,
-            dashboard_component_1.DashboardComponent
+            dashboard_component_1.DashboardComponent,
+            tasks_component_1.TasksComponent
         ],
         bootstrap: [app_component_1.AppComponent],
-        providers: [hero_service_1.HeroService]
+        providers: [
+            hero_service_1.HeroService,
+            task_service_1.TaskService
+        ]
     })
 ], AppModule);
 exports.AppModule = AppModule;

@@ -17,6 +17,20 @@ var HeroService = (function () {
         this.heroesUrl = 'api/heroes';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
+    HeroService.prototype.create = function (heroName) {
+        return this.http
+            .post(this.heroesUrl, JSON.stringify({ name: heroName }), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json().data; })
+            .catch(this.handleError);
+    };
+    HeroService.prototype.delete = function (heroId) {
+        var url = this.heroesUrl + "/" + heroId;
+        return this.http.delete(url, { headers: this.headers })
+            .toPromise()
+            .then(function () { return null; })
+            .catch(this.handleError);
+    };
     HeroService.prototype.getHeroes = function () {
         return this.http.get(this.heroesUrl)
             .toPromise()
