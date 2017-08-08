@@ -1,16 +1,19 @@
 version: '3.3'
 services:
-  # mysql_db:
-  #   image: mysql
-  #   volumes:
-  #     - db_data:/var/lib/mysql
-  #   restart: always
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: 123456
-  #     MYSQL_DATABASE: todo_inc
-  #     MYSQL_USER: firik
-  #     MYSQL_PASSWORD: 123456
-  #   container_name: mysql
+  mysql_db:
+    image: mysql
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: todo_inc
+      MYSQL_USER: firik
+      MYSQL_PASSWORD: 123456
+    container_name: mysql
+    networks:
+      app_net:
+        ipv4_address: 175.18.18.3
 
   backend:
     image: docker_backend
@@ -18,24 +21,41 @@ services:
       context: ./
       dockerfile: Dockerfile_django
     command: python3 manage.py runserver 0.0.0.0:8000
-    # command: bash
     volumes:
-      - ../django_backend/.:/home/firik/app/django_backend
+      - /home/firik/apps/angular-django/django_backend:/home/firik/app/django_backend
     ports:
       - "8000:8000"
-    # depends_on:
-      # - mysql_db
+    depends_on:
+      - mysql_db
     container_name: django
+    networks:
+      app_net:
+        ipv4_address: 175.18.18.5
+    # tty: true
 
-  # angular:
-  #   build: 
-  #     context: ./
-  #     dockerfile: Dockerfile_angular2
-  #   image: angular2
-  #   volumes:
-  #     - ../ngfiles/.:/home/firik/app/ngfiles
-  #   container_name: angular2
-  #   command: npm start
-    
+  angular:
+    build: 
+      context: ./
+      dockerfile: Dockerfile_angular2
+    image: angular2
+    volumes:
+      - /home/firik/apps/angular-django/ngfiles:/home/firik/app/ngfiles
+    container_name: angular2
+    command: npm start
+    ports:
+      - "4201:4201"
+    networks:
+      app_net:
+        ipv4_address: 175.18.18.2
+        
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 175.18.18.0/24
+
 volumes:
   db_data:

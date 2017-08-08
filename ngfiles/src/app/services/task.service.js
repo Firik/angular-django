@@ -15,6 +15,7 @@ var TaskService = (function () {
     function TaskService(http) {
         this.http = http;
         // private headers = new Headers({ 'Content-Type': 'application/json' });
+        this.backendServer = 'http://175.18.18.5:8000/';
         this.url = 'api/tasks';
     }
     TaskService.prototype.getTasksByCurrentWeek = function () {
