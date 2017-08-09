@@ -14,14 +14,14 @@ require("rxjs/add/operator/toPromise");
 var TaskService = (function () {
     function TaskService(http) {
         this.http = http;
-        // private headers = new Headers({ 'Content-Type': 'application/json' });
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.backendServer = 'http://175.18.18.5:8000/';
         this.url = 'api/tasks';
     }
     TaskService.prototype.getTasksByCurrentWeek = function () {
         var options = new http_1.RequestOptions();
         var currentWeek = '';
-        return this.http.get(this.url)
+        return this.http.get(this.backendServer + this.url)
             .toPromise()
             .then(function (response) {
             return response.json().data;

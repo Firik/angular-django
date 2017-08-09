@@ -1,33 +1,50 @@
 version: '3.3'
 services:
-  mysql_db:
-    image: mysql
+#   mysql_db:
+#     image: mysql
+#     volumes:
+#       - db_data:/var/lib/mysql
+#     restart: always
+#     environment:
+#       MYSQL_ROOT_PASSWORD: 123456
+#       MYSQL_DATABASE: todo_inc
+#       MYSQL_USER: firik
+#       MYSQL_PASSWORD: 123456
+#     container_name: mysql
+#     networks:
+#       app_net:
+#         ipv4_address: 175.18.18.3
+
+  postgresql_db:
+    image: postgres
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/var/lib/postgresql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: todo_inc
-      MYSQL_USER: firik
-      MYSQL_PASSWORD: 123456
-    container_name: mysql
+      POSTGRES_USER: dock_djan
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: todo_inc
+    container_name: postgresql
     networks:
       app_net:
-        ipv4_address: 175.18.18.3
+        ipv4_address: 175.18.18.6
+    ports:
+      - "5432:5432"
 
   backend:
-    image: docker_backend
-    build: 
-      context: ./
-      dockerfile: Dockerfile_django
-    command: python3 manage.py runserver 0.0.0.0:8000
+    image: firik/django_backend:0.0.4
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile_django
+    command: bash -c "source ../venv/bin/activate && python3 manage.py runserver 0.0.0.0:8000"
+#    command: bash
     volumes:
-      - /home/firik/apps/angular-django/django_backend:/home/firik/app/django_backend
+      - /home/firik/apps/angular-django/task_backend:/home/dock_djan/task_backend
     ports:
       - "8000:8000"
     depends_on:
-      - mysql_db
-    container_name: django
+      - postgresql_db
+    container_name: django_backend
     networks:
       app_net:
         ipv4_address: 175.18.18.5

@@ -4,7 +4,7 @@ export class Task {
 	day: number;
 	month: number;
 	year: number;
-	timeStart: string;
-	timeEnd: string;
+	timeStart: number;
+	timeEnd: number;
 	description: string;
 }

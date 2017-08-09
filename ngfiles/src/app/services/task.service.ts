@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class TaskService {
-	// private headers = new Headers({ 'Content-Type': 'application/json' });
+	private headers = new Headers({ 'Content-Type': 'application/json' });
 	private backendServer = 'http://175.18.18.5:8000/';
 	private url = 'api/tasks';
 
@@ -17,8 +17,7 @@ export class TaskService {
 
 		let currentWeek = '';
 
-
-		return this.http.get(this.url)
+		return this.http.get(this.backendServer + this.url)
 		.toPromise()
 		.then(response => {
 			return response.json().data as Task[];
