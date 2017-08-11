@@ -1,0 +1,41 @@
+2017/08/10 14:54:18 [error] 7#7: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: backend, request: "GET / HTTP/1.1", upstream: "uwsgi://127.0.0.1:8001", host: "localhost"
+2017/08/10 14:54:23 [error] 7#7: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: backend, request: "GET / HTTP/1.1", upstream: "uwsgi://127.0.0.1:8001", host: "localhost"
+2017/08/10 14:54:38 [error] 7#7: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: backend, request: "GET / HTTP/1.1", upstream: "uwsgi://127.0.0.1:8001", host: "localhost"
+2017/08/10 14:55:57 [error] 5#5: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: backend, request: "GET / HTTP/1.1", upstream: "uwsgi://127.0.0.1:8001", host: "localhost"
+2017/08/10 14:56:41 [error] 5#5: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: backend, request: "GET / HTTP/1.1", upstream: "uwsgi://127.0.0.1:8001", host: "localhost"
+2017/08/10 14:57:33 [error] 5#5: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: backend, request: "GET / HTTP/1.1", upstream: "uwsgi://127.0.0.1:8001", host: "localhost"
+2017/08/10 14:59:47 [error] 5#5: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: backend, request: "GET / HTTP/1.1", upstream: "uwsgi://127.0.0.1:8001", host: "localhost"
+2017/08/10 15:00:43 [emerg] 1#1: host not found in upstream "backend:8001" in /etc/nginx/conf.d/todo.inc.conf:3
+2017/08/10 15:13:33 [error] 5#5: *1 upstream timed out (110: Connection timed out) while connecting to upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "uwsgi://175.18.18.5:8001", host: "localhost"
+2017/08/10 15:15:20 [error] 5#5: *1 upstream timed out (110: Connection timed out) while connecting to upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "uwsgi://175.18.18.5:8001", host: "localhost"
+2017/08/10 15:20:49 [emerg] 1#1: host not found in upstream "backend" in /etc/nginx/conf.d/todo.inc.conf:3
+2017/08/10 15:26:03 [emerg] 1#1: host not found in upstream "django_backend:8001" in /etc/nginx/conf.d/todo.inc.conf:3
+2017/08/10 15:32:23 [error] 5#5: *1 upstream timed out (110: Connection timed out) while connecting to upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "uwsgi://175.18.18.5:8001", host: "localhost:8000"
+2017/08/11 06:14:09 [emerg] 1#1: host not found in upstream "todo.inc:8001" in /etc/nginx/conf.d/todo.inc.conf:3
+2017/08/11 08:20:12 [emerg] 1#1: invalid URL prefix in /etc/nginx/conf.d/todo.inc.conf:26
+2017/08/11 08:20:25 [emerg] 1#1: host not found in upstream "backend" in /etc/nginx/conf.d/todo.inc.conf:26
+2017/08/11 08:20:54 [emerg] 1#1: host not found in upstream "django_backend" in /etc/nginx/conf.d/todo.inc.conf:26
+2017/08/11 08:22:08 [error] 5#5: *1 upstream timed out (110: Connection timed out) while connecting to upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://175.18.18.5:8001/", host: "localhost:8000"
+2017/08/11 08:25:26 [error] 5#5: *1 upstream timed out (110: Connection timed out) while connecting to upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://175.18.18.5:8001/", host: "localhost:8000"
+2017/08/11 08:30:52 [emerg] 1#1: host not found in upstream "backend" in /etc/nginx/conf.d/todo.inc.conf:26
+2017/08/11 08:34:11 [error] 5#5: *1 upstream timed out (110: Connection timed out) while connecting to upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://175.18.18.5:8001/", host: "localhost:8000"
+2017/08/11 08:35:32 [error] 5#5: *1 upstream timed out (110: Connection timed out) while connecting to upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://175.18.18.5:8001/", host: "localhost:8000"
+2017/08/11 08:36:42 [error] 5#5: *1 upstream timed out (110: Connection timed out) while connecting to upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://175.18.18.5:8001/", host: "localhost:8000"
+2017/08/11 08:38:37 [error] 5#5: *3 upstream timed out (110: Connection timed out) while connecting to upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://175.18.18.5:8001/", host: "localhost:8000"
+2017/08/11 08:43:09 [emerg] 26#26: open() "/etc/nginx/todo.inc.conf" failed (2: No such file or directory)
+2017/08/11 08:43:32 [emerg] 27#27: open() "/todo.inc.conf" failed (2: No such file or directory)
+2017/08/11 08:43:38 [emerg] 28#28: open() "/etc/nginx/./todo.inc.conf" failed (2: No such file or directory)
+2017/08/11 08:43:54 [emerg] 29#29: open() "/etc/nginx/todo.inc.conf" failed (2: No such file or directory)
+2017/08/11 08:44:24 [emerg] 1#1: open() "/etc/nginx/nginx.conf" failed (2: No such file or directory)
+2017/08/11 08:45:17 [emerg] 1#1: "server" directive is not allowed here in /etc/nginx/nginx.conf:6
+2017/08/11 08:48:39 [emerg] 15#15: "server" directive is not allowed here in /etc/nginx/conf.d/todo.inc.conf:6
+2017/08/11 08:49:11 [emerg] 16#16: no "events" section in configuration
+2017/08/11 08:49:21 [emerg] 17#17: "server" directive is not allowed here in /etc/nginx/conf.d/todo.inc.conf:6
+2017/08/11 08:49:44 [emerg] 18#18: no "events" section in configuration
+2017/08/11 08:51:59 [emerg] 19#19: unknown directive "main" in /etc/nginx/conf.d/todo.inc.conf:5
+2017/08/11 08:53:01 [emerg] 20#20: no "events" section in configuration
+2017/08/11 08:56:53 [emerg] 1#1: "http" directive is not allowed here in /etc/nginx/conf.d/todo.inc.conf:6
+2017/08/11 08:57:27 [emerg] 1#1: unknown directive "main" in /etc/nginx/conf.d/todo.inc.conf:5
+2017/08/11 08:58:18 [emerg] 1#1: unknown directive "main" in /etc/nginx/conf.d/todo.inc.conf:5
+2017/08/11 08:58:58 [emerg] 1#1: "http" directive is not allowed here in /etc/nginx/conf.d/todo.inc.conf:5
+2017/08/11 08:59:23 [emerg] 1#1: "events" directive is not allowed here in /etc/nginx/conf.d/todo.inc.conf:30

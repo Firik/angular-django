@@ -1,0 +1,88 @@
+version: '3.3'
+services:
+#   mysql_db:
+#     image: mysql
+#     volumes:
+#       - db_data:/var/lib/mysql
+#     restart: always
+#     environment:
+#       MYSQL_ROOT_PASSWORD: 123456
+#       MYSQL_DATABASE: todo_inc
+#       MYSQL_USER: firik
+#       MYSQL_PASSWORD: 123456
+#     container_name: mysql
+#     networks:
+#       app_net:
+#         ipv4_address: 175.18.18.3
+
+  postgresql_db:
+    build: 
+      context: images/postgres/
+      dockerfile: Dockerfile
+    volumes:
+      - ./DB/postgres:/var/lib/postgresql
+    restart: always
+    environment:
+      POSTGRES_USER: dock_djan
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: todo_inc
+    container_name: postgresql
+    networks:
+      app_net:
+        ipv4_address: 175.18.18.6
+    ports:
+      - "5432:5432"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8000:8000"
+      - "443:443"
+    volumes:
+      - ./hosts:/etc/nginx/conf.d
+      - ./www:/var/www
+      - ./logs/nginx:/var/log/nginx
+    links:
+      - backend
+
+  backend:
+    build: 
+      context: images/django/
+      dockerfile: Dockerfile_django
+    # command: uwsgi --socket :8001 --wsgi-file test.py
+    # command: uwsgi --http :8001 --module task_backend.wsgi
+    command: python manage.py runserver 0.0.0.0:8001
+    restart: always
+    volumes:
+      - ./www/todo.inc/task_backend:/usr/src/app
+    ports:
+      - "8001:8001"
+    depends_on:
+      - postgresql_db
+    container_name: django_backend
+    networks:
+      app_net:
+        ipv4_address: 175.18.18.5
+
+  # angular:
+  #   build: 
+  #     context: images/angular2
+  #     dockerfile: Dockerfile_angular2
+  #   volumes:
+  #     - ./www/todo.inc/ngfiles:/var/www
+  #   container_name: angular2
+  #   command: npm start
+  #   ports:
+  #     - "4201:4201"
+  #   networks:
+  #     app_net:
+  #       ipv4_address: 175.18.18.2
+        
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 175.18.18.0/24
