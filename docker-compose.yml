@@ -44,14 +44,18 @@ services:
       - ./logs/nginx:/var/log/nginx
     links:
       - backend
+    networks:
+      app_net:
+        ipv4_address: 175.18.18.9
 
   backend:
     build: 
       context: images/django/
       dockerfile: Dockerfile_django
-    # command: uwsgi --socket :8001 --wsgi-file test.py
-    # command: uwsgi --http :8001 --module task_backend.wsgi
-    command: python manage.py runserver 0.0.0.0:8001
+    # command: uwsgi --socket todo.inc.sock --wsgi-file task_backend/test.py
+    command: uwsgi --http 0.0.0.0:8001 --module task_backend.wsgi
+    # command: uwsgi --http 0.0.0.0:8001 --wsgi-file task_backend/test.py
+    # command: python manage.py runserver 0.0.0.0:8001
     restart: always
     volumes:
       - ./www/todo.inc/task_backend:/usr/src/app
