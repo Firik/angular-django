@@ -10,7 +10,12 @@ RUN apk upgrade --update && \
     make -j$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
     make install && \
     cd / && \
-    npm install -g npm@${NPM_VERSION} && \
+    npm cache clean && \
+    npm install -g npm@${NPM_VERSION}
+
+WORKDIR /var/www
+
+RUN npm install && \
     apk del gcc g++ linux-headers && \
     rm -rf /etc/ssl /node-${NODE_VERSION} /usr/include \
     /usr/share/man /tmp/* /var/cache/apk/* /root/.npm /root/.node-gyp \

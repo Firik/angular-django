@@ -51,7 +51,7 @@ services:
   backend:
     build: 
       context: images/django/
-      dockerfile: Dockerfile_django
+      dockerfile: Dockerfile
     # command: uwsgi --socket todo.inc.sock --wsgi-file task_backend/test.py
     command: uwsgi --http 0.0.0.0:8001 --module task_backend.wsgi
     # command: uwsgi --http 0.0.0.0:8001 --wsgi-file task_backend/test.py
@@ -71,7 +71,7 @@ services:
   angular:
     build: 
       context: images/angular2
-      dockerfile: Dockerfile_angular2
+      dockerfile: Dockerfile
     volumes:
       - ./www/todo.inc/ngfiles:/var/www
     container_name: angular2
