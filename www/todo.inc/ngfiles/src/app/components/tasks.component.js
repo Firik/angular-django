@@ -19,7 +19,9 @@ var TasksComponent = (function () {
     };
     TasksComponent.prototype.getTasksByCurrentWeek = function () {
         var _this = this;
-        this.taskService.getTasksByCurrentWeek().then(function (tasks) { return _this.tasks = tasks; });
+        this.taskService.getTasksByCurrentWeek().then(function (tasks) {
+            _this.tasks = tasks;
+        });
     };
     return TasksComponent;
 }());

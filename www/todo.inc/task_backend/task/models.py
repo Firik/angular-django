@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Task(models.Model):
-    status = models.SmallIntegerField(default=0, max_length=2)
+    status = models.SmallIntegerField(default=0)
     day = models.SmallIntegerField(default=0)
     month = models.SmallIntegerField(default=0)
     year = models.IntegerField(default=0)

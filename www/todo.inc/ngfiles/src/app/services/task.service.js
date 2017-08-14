@@ -15,7 +15,7 @@ var TaskService = (function () {
     function TaskService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.backendServer = 'http://175.18.18.5:8000/';
+        this.backendServer = 'http://localhost/';
         this.url = 'api/tasks';
     }
     TaskService.prototype.getTasksByCurrentWeek = function () {
@@ -24,7 +24,7 @@ var TaskService = (function () {
         return this.http.get(this.backendServer + this.url)
             .toPromise()
             .then(function (response) {
-            return response.json().data;
+            return response.json();
         })
             .catch(this.handleError);
     };
@@ -43,8 +43,9 @@ var TaskService = (function () {
     // 	.catch(this.handleError);
     // }
     TaskService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+        console.error('An error occurred', error);
+        return;
+        // return Promise.reject(error.message || error);
     };
     return TaskService;
 }());

@@ -22,7 +22,9 @@ export class TasksComponent implements OnInit {
 	
 	getTasksByCurrentWeek(): void {
 		this.taskService.getTasksByCurrentWeek().then(
-			tasks => this.tasks = tasks
+			(tasks) => {
+				this.tasks = tasks
+			}
 		);
 	}
 }
